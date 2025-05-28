@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LoginRegister = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,6 +12,7 @@ const LoginRegister = () => {
     setIsLogin(!isLogin);
     setFormData({ email: "", password: "" });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,21 +24,24 @@ const LoginRegister = () => {
       localStorage.setItem("token", data.token);
 
       if (!isLogin) {
-        alert("Registered successfully. Please login.");
+        toast.success("Registered successfully");
         setIsLogin(true); // Switch to login UI
       } else {
-        alert("Login successful!");
+        toast.success("Login successful!");
+        // Wait 1.5 seconds before navigating so user can see toast
+
         navigate("/dashboard");
       }
     } catch (err) {
-      alert(
-        "Error: " + (err.response?.data?.message || "Something went wrong")
-      );
+      toast.error(err.response?.data?.message || "Something went wrong");
     }
   };
 
   const loginWith = (provider) => {
-    window.open(`https://todolist-backend-jdwc.onrender.com/auth/${provider}`, "_self");
+    window.open(
+      `https://todolist-backend-jdwc.onrender.com/auth/${provider}`,
+      "_self"
+    );
   };
 
   return (
@@ -47,7 +52,7 @@ const LoginRegister = () => {
           "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80')",
       }}
     >
-      <div className="max-w-md mx-auto mt-20 p-6 border rounded-xl shadow-lg bg-white  bg-opacity-70 ">
+      <div className="max-w-md mx-auto mt-20 p-6 border rounded-xl shadow-lg bg-white bg-opacity-70">
         <h2 className="text-2xl font-bold text-center mb-6">
           {isLogin ? "Login" : "Register"}
         </h2>

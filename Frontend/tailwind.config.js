@@ -2,14 +2,14 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/*/.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {
       keyframes: {
         bounceVertical: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },  // bounce up by 20px
+          '50%': { transform: 'translateY(-20px)' },
         },
       },
       animation: {

@@ -4,6 +4,7 @@ import api from "../utils/api";
 import TaskItem from "./TaskItem";
 import TaskModal from "./TaskModal";
 import { triggerConfetti } from "../utils/confetti";
+import { TypeAnimation } from "react-type-animation";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -73,8 +74,19 @@ const Dashboard = () => {
       </h2>
 
       {tasks.length === 0 ? (
-        <div className="flex-grow flex flex-col items-center justify-center text-white text-lg lg:text-2xl">
-          <p className="mb-6">You have no tasks yet. Click below to add one!</p>
+        <div className="flex-grow flex flex-col items-center justify-center text-Black text-lg lg:text-2xl font-extrabold lg:text-4xl">
+          <TypeAnimation
+            sequence={[
+              "You have no tasks yet. Click below to add one!",
+              2000, // Wait for 2 seconds
+              "", // Clear the text
+              500, // Short pause before restarting
+            ]}
+            wrapper="p"
+            speed={50}
+            className="text-center"
+            repeat={Infinity} // Infinite loop
+          />
         </div>
       ) : (
         <div className="space-y-4 flex-grow overflow-auto">
