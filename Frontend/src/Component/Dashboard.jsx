@@ -42,7 +42,7 @@ const Dashboard = () => {
       });
       fetchTasks();
       triggerConfetti(); // 🎉 Trigger animation here
-      alert("Marked as completed");
+      // alert("Marked as completed");
     } catch {
       alert("Error updating task");
     }
