@@ -40,7 +40,7 @@ const handleUser = async (profile, provider, done) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback"
+  callbackURL: "https://todolist-backend-jdwc.onrender.com/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
   handleUser(profile, 'google', done);
 }));
@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: "https://todolist-backend-jdwc.onrender.com/auth/google/callback"
+  callbackURL: "/auth/github/callback"
 }, (accessToken, refreshToken, profile, done) => {
   handleUser(profile, 'github', done);
 }));
