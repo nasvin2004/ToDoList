@@ -55,7 +55,7 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 
 ---
 ## 📦 Project Structure
----
+
 ```
 
 .
@@ -108,6 +108,7 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 │   └── README.md
 
 ```
+---
 
 ---
 📐 Architecture Diagram
