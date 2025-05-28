@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const SocialAuthSuccess = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -9,6 +9,7 @@ const SocialAuthSuccess = () => {
     const token = new URLSearchParams(location.search).get("token");
     if (token) {
       localStorage.setItem("token", token);
+      toast.success("login SuccessFully");
       navigate("/dashboard");
       console.log(token);
     } else {
