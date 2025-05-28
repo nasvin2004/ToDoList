@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // import navigation hook
 import api from "../utils/api";
 import TaskItem from "./TaskItem";
 import TaskModal from "./TaskModal";
+import { triggerConfetti } from "../utils/confetti"; // import at the top
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -40,6 +41,7 @@ const Dashboard = () => {
         status: "completed",
       });
       fetchTasks();
+      triggerConfetti(); // 🎉 Trigger animation here
       alert("Marked as completed");
     } catch {
       alert("Error updating task");
