@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: "/auth/github/callback"
+  callbackURL: "https://todolist-backend-app.onrender.com/auth/github/callback"
 }, (accessToken, refreshToken, profile, done) => {
   handleUser(profile, 'github', done);
 }));
@@ -58,7 +58,7 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_CLIENT_ID,
   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-  callbackURL: "/auth/facebook/callback",
+  callbackURL: "https://todolist-backend-app.onrender.com/auth/github/callback",
   profileFields: ['id', 'displayName', 'photos', 'email']
 }, (accessToken, refreshToken, profile, done) => {
   handleUser(profile, 'facebook', done);
