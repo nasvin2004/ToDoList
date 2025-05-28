@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000", // change if your backend URL is different
+  baseURL: "https://todolist-backend-jdwc.onrender.com", // change if your backend URL is different
 });
 
 // Automatically attach token to every request
