@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // import navigation hook
+import { useNavigate } from "react-router-dom";
 import api from "../utils/api";
 import TaskItem from "./TaskItem";
 import TaskModal from "./TaskModal";
-import { triggerConfetti } from "../utils/confetti"; // import at the top
+import { triggerConfetti } from "../utils/confetti";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
-  const navigate = useNavigate(); // to redirect
+  const navigate = useNavigate();
 
   const fetchTasks = async () => {
     try {
@@ -41,22 +41,20 @@ const Dashboard = () => {
         status: "completed",
       });
       fetchTasks();
-      triggerConfetti(); // 🎉 Trigger animation here
-      // alert("Marked as completed");
+      triggerConfetti();
     } catch {
       alert("Error updating task");
     }
   };
 
-  // Logout handler
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/"); // Redirect to login or register page
+    navigate("/");
   };
 
   return (
     <div
-      className="p-6 relative min-h-screen bg-cover bg-center"
+      className="p-6 relative min-h-screen bg-cover bg-center flex flex-col"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80')",
@@ -69,33 +67,48 @@ const Dashboard = () => {
       >
         Logout
       </button>
+
       <h2 className="text-2xl font-bold mb-4 lg:text-center lg:text-4xl">
         Your Tasks
       </h2>
-      <div className="space-y-4 ">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task._id}
-            task={task}
-            onEdit={() => {
-              setSelectedTask(task);
-              setModalOpen(true);
-            }}
-            onDelete={() => handleDelete(task._id)}
-            onComplete={() => handleComplete(task)}
-          />
-        ))}
-      </div>
+
+      {tasks.length === 0 ? (
+        <div className="flex-grow flex flex-col items-center justify-center text-white text-lg lg:text-2xl">
+          <p className="mb-6">You have no tasks yet. Click below to add one!</p>
+        </div>
+      ) : (
+        <div className="space-y-4 flex-grow overflow-auto">
+          {tasks.map((task) => (
+            <TaskItem
+              key={task._id}
+              task={task}
+              onEdit={() => {
+                setSelectedTask(task);
+                setModalOpen(true);
+              }}
+              onDelete={() => handleDelete(task._id)}
+              onComplete={() => handleComplete(task)}
+            />
+          ))}
+        </div>
+      )}
+
       {/* Floating Add Button */}
       <button
         onClick={() => {
           setSelectedTask(null);
           setModalOpen(true);
         }}
-        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-800 text-white p-4 rounded-full shadow-lg lg:p-5  lg:w-40 lg:text-xl"
+        className={`fixed bg-blue-600 hover:bg-blue-800 text-white p-4 rounded-full shadow-lg lg:p-5 lg:w-40 lg:text-xl
+    ${
+      tasks.length === 0
+        ? "animate-bounceVertical bottom-6 right-6"
+        : "bottom-6 right-6"
+    }`}
       >
         + Add Task
       </button>
+
       {modalOpen && (
         <TaskModal
           task={selectedTask}
