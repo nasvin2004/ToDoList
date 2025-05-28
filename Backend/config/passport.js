@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: "/auth/github/callback"
+  callbackURL: "https://todolist-backend-jdwc.onrender.com/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
   handleUser(profile, 'github', done);
 }));
