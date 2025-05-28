@@ -53,7 +53,7 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 
 ---
 
----
+```
 ## 📦 Project Structure
 .
 ├── Backend/                          # Express.js server for authentication and tasks
@@ -104,7 +104,7 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 │   ├── vite.config.js
 │   └── README.md
 
----
+```
 
 ---
 📐 Architecture Diagram
