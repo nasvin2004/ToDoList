@@ -12,12 +12,6 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 
 ---
 
-## 🌐 Live Demo
-
-> [Live App URL](https://todolist-frontend-app.onrender.com/)
-
----
-
 ---
 📺 Demo Video
 > [Watch the demo here]() 
