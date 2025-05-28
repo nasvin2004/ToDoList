@@ -55,46 +55,54 @@ A full-stack web application built with **Node.js**, **Express**, **MongoDB**, a
 
 ---
 ## 📦 Project Structure
-
-Backend/
+.
+├── Backend/                          # Express.js server for authentication and tasks
+│   ├── config/                       # Passport strategies for social login
+│   │   └── passport.js
+│   ├── middlewares/                 # Custom middlewares
+│   │   └── verifyToken.js           # JWT token verification
+│   ├── Model/                       # Mongoose models
+│   │   ├── task.js
+│   │   └── user.js
+│   ├── Routes/                      # API route handlers
+│   │   ├── dashboard.js
+│   │   ├── manual-login.js
+│   │   ├── social-login.js
+│   │   └── task.js
+│   ├── .env                         # Environment variables
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   └── server.js                    # Main server entry point
 │
-├── config/
-│   └── passport.js         # Passport strategies for OAuth
-│
-├── middlewares/
-│   └── verifyToken.js      # JWT validation middleware
-│
-├── Model/
-│   ├── user.js             # User schema
-│   └── task.js             # Task schema
-│
-├── Routes/
-│   ├── dashboard.js        # Dashboard endpoint
-│   ├── manual-login.js     # Manual auth route
-│   ├── social-login.js     # OAuth login route
-│   └── task.js             # Task routes
-│
-├── server.js               # Entry point
-└── .env                    # Environment config
-
-Frontend/
-│
-├── public/
-│
-├── src/
-│   ├── assets/             # Icons
-│   ├── Component/          # React components
-│   │   ├── Dashboard.jsx
-│   │   ├── SocialAuthSuccess.jsx
-│   │   ├── SocialLogin.jsx
-│   │   ├── TaskItem.jsx
-│   │   └── TaskModal.jsx
-│   ├── utils/
-│   │   ├── api.js          # API service
-│   │   └── confetti.js     # UI animation
-│   ├── App.jsx             # Main app
-│   ├── main.jsx            # App root
-│   └── index.css
+├── Frontend/                        # React app with Vite and TailwindCSS
+│   ├── public/
+│   │   └── sounds/                  # Sound assets (if any)
+│   │       └── vite.svg
+│   ├── src/
+│   │   ├── assets/                  # Icons and media
+│   │   │   └── react.svg
+│   │   ├── Component/               # UI components
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── SocialAuthSuccess.jsx
+│   │   │   ├── SocialLogin.jsx
+│   │   │   ├── TaskItem.jsx
+│   │   │   └── TaskModal.jsx
+│   │   ├── utils/                   # Utility files
+│   │   │   ├── api.js
+│   │   │   └── confetti.js
+│   │   ├── App.jsx                  # Main App component
+│   │   ├── main.jsx                 # React entry point
+│   │   ├── App.css
+│   │   └── index.css
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   └── README.md
 
 ---
 
