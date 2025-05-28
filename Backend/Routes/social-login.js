@@ -13,7 +13,8 @@ const generateToken = (user) => {
 // Send token to frontend on successful auth
 const sendToken = (req, res) => {
   const token = generateToken(req.user);
-  res.redirect(`http://localhost:5173/social-auth-success?token=${token}`);
+  const redirectBase = process.env.FRONTEND_URL || "http://localhost:5173";
+  res.redirect(`${redirectBase}/social-auth-success?token=${token}`);
 };
 
 // Google Auth
