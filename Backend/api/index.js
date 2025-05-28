@@ -25,10 +25,10 @@
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-  app.use('/auth', require('./Routes/social-login'));
-  app.use('/auth', require('./Routes/manual-login'));
-  app.use('/tasks', require('./Routes/task'));
-  app.use('/dash', require('./Routes/dashboard'));
+  app.use('/auth', require('../Routes/social-login'));
+  app.use('/auth', require('../Routes/manual-login'));
+  app.use('/tasks', require('../Routes/task'));
+  app.use('/dash', require('../Routes/dashboard'));
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server running on ${PORT}`));

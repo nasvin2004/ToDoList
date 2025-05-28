@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
+import { toast } from "react-toastify";
 
 const TaskModal = ({ task, onClose, onSuccess }) => {
   const [form, setForm] = useState({
@@ -18,10 +19,12 @@ const TaskModal = ({ task, onClose, onSuccess }) => {
     try {
       if (task) {
         await api.put(`/tasks/edit/${task._id}`, form);
-        alert("Task updated");
+        // alert("Task updated");
+        toast.success("Task updated");
       } else {
         await api.post("/tasks/create", form);
-        alert("Task created");
+        // alert("Task created");
+        toast.success("Task Created");
       }
       onSuccess();
       onClose();

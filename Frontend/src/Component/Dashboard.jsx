@@ -5,6 +5,7 @@ import TaskItem from "./TaskItem";
 import TaskModal from "./TaskModal";
 import { triggerConfetti } from "../utils/confetti";
 import { TypeAnimation } from "react-type-animation";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -29,7 +30,8 @@ const Dashboard = () => {
     try {
       await api.delete(`/tasks/delete/${id}`);
       fetchTasks();
-      alert("Task deleted");
+      // alert("Task deleted");
+      toast.error("Task deleted");
     } catch {
       alert("Delete failed");
     }
@@ -50,6 +52,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    toast.success("Successfully Logout");
     navigate("/");
   };
 
